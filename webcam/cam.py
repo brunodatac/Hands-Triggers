@@ -27,7 +27,7 @@ class Webcam_stream():
             if cv2.getWindowProperty(window_name, cv2.WND_PROP_VISIBLE) < 1:
                 break
             
-        cv2.detroyAllWindows()
+        cv2.destroyAllWindows()
         cap.release()
         print("Close")
-        
+
