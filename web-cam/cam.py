@@ -4,6 +4,7 @@ cap = cv2.VideoCapture(0)
 
 if not cap.isOpened():
     print("Webcam error")
+    exit()
 
 while True:
     ret, frame = cap.read()
