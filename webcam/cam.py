@@ -31,3 +31,4 @@ class Webcam_stream():
         cap.release()
         print("Close")
 
+Webcam_stream(0)
