@@ -5,6 +5,8 @@ model = YOLO(r"D:\Projetos\Hand-Signals\train\best_n_50e_8class.pt")
 
 cap = cv2.VideoCapture(0)
 
+box = []
+
 while True:
     
     # Lendo cada frame do vídeo
@@ -14,6 +16,10 @@ while True:
     
     # Executando a predição com o modelo YOLO
     results = model.predict(img,  conf=0.40, classes=21, show=False)
+    
+    for result in results:
+        box.append(result.boxes.cls)
+
 
 
     # Exibindo a imagem na janela
@@ -23,5 +29,6 @@ while True:
     if cv2.waitKey(1) == ord('q'):
         break
 
+print(box)
 cap.release()
 cv2.destroyAllWindows()
