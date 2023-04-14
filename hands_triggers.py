@@ -1,4 +1,6 @@
 from ultralytics import YOLO
+import subprocess
+import time
 import torch
 import cv2
 
@@ -6,7 +8,6 @@ model = YOLO(r"D:\Projetos\Hand-Signals\train\best_n_50e_8class.pt")
 
 cap = cv2.VideoCapture(0)
 
-# box = []
 cont = 0
 
 while True:
@@ -17,13 +18,26 @@ while True:
         break
     
     # Executando a predição com o modelo YOLO
-    results = model.predict(img,  conf=0.40, classes=21, show=False)
+    results_v = model.predict(img,  conf=0.40, classes=21, show=False)
+    results_w = model.predict(img,  conf=0.40, classes=22, show=False)
     
-    for result in results:
-        # box.append(result.boxes.cls)
+    for result in results_v:
+        #box.append(result.boxes.cls)
         for tensor in result.boxes.cls:
             if torch.allclose(tensor, torch.tensor([21.]), atol=1e-5):
                 cont += 1
+                if cont == 1:
+                    processo = subprocess.Popen(['notepad.exe', 'D:\Projetos\Teste\meabra.txt'])
+                    pass
+                    #processo.wait()
+
+    for result_w in results_w:
+        #box.append(result.boxes.cls)
+        for tensor_w in result_w.boxes.cls:
+            if torch.allclose(tensor_w, torch.tensor([22.]), atol=1e-5):
+                processo.terminate() # fecha o programa
+                cont = 0
+                break
 
 
     # Exibindo a imagem na janela
@@ -33,7 +47,7 @@ while True:
     if cv2.waitKey(1) == ord('q'):
         break
 
-# print(box)
-print(cont)
+#print(box)
+
 cap.release()
 cv2.destroyAllWindows()
