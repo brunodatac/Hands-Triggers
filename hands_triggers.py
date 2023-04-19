@@ -16,10 +16,11 @@ while True:
     ret, img = cap.read()
     if not ret:
         break
-    
-    # Executando a predição com o modelo YOLO
-    results_v = model.predict(img,  conf=0.40, classes=21, show=False)
-    results_w = model.predict(img,  conf=0.40, classes=22, show=False)
+
+    with torch.no_grad():
+        # Executando a predição com o modelo YOLO
+        results_v = model.predict(img,  conf=0.40, classes=21, show=False)
+        results_w = model.predict(img,  conf=0.40, classes=22, show=False)
     
     for result in results_v:
         #box.append(result.boxes.cls)
