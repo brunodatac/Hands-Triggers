@@ -19,13 +19,13 @@ while True:
 
     with torch.no_grad():
         # Executando a predição com o modelo YOLO
-        results_v = model.predict(img,  conf=0.40, classes=21, show=False)
-        results_w = model.predict(img,  conf=0.40, classes=22, show=False)
+        results_v = model.predict(img,  conf=0.50, classes=21, show=False)
+        results_w = model.predict(img,  conf=0.50, classes=22, show=False)
     
     for result in results_v:
         #box.append(result.boxes.cls)
         for tensor in result.boxes.cls:
-            if torch.allclose(tensor, torch.tensor([21.]), atol=1e-5):
+            if torch.allclose(tensor, torch.tensor([21.])):
                 cont += 1
                 if cont == 1:
                     processo = subprocess.Popen(['notepad.exe', 'D:\Projetos\Teste\meabra.txt'])
@@ -35,7 +35,7 @@ while True:
     for result_w in results_w:
         #box.append(result.boxes.cls)
         for tensor_w in result_w.boxes.cls:
-            if torch.allclose(tensor_w, torch.tensor([22.]), atol=1e-5):
+            if torch.allclose(tensor_w, torch.tensor([22.])):
                 processo.terminate() # fecha o programa
                 cont = 0
                 break
