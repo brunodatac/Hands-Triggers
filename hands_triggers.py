@@ -4,7 +4,7 @@ import time
 import torch
 import cv2
 
-model = YOLO(r"D:\Projetos\Hand-Signals\train\best_n_50e_8class.pt")
+model = YOLO(r"D:\Projetos\Hand-Signals\train\best_cuda.pt")
 
 cap = cv2.VideoCapture(0)
 
@@ -19,8 +19,8 @@ while True:
 
     with torch.no_grad():
         # Executando a predição com o modelo YOLO
-        results_v = model.predict(img,  conf=0.50, classes=21, show=False)
-        results_w = model.predict(img,  conf=0.50, classes=22, show=False)
+        results_v = model.predict(img,  conf=0.65, classes=21, show=True)
+        results_w = model.predict(img,  conf=0.65, classes=22, show=True)
     
     for result in results_v:
         #box.append(result.boxes.cls)
@@ -41,8 +41,8 @@ while True:
                 break
 
 
-    # Exibindo a imagem na janela
-    cv2.imshow("YOLOv8", img)
+    # # Exibindo a imagem na janela
+    # cv2.imshow("YOLOv8", img)
     
     # Aguardando a tecla 'q' para finalizar a execução
     if cv2.waitKey(1) == ord('q'):
