@@ -11,17 +11,9 @@ driver.maximize_window()
 
 # Navega até a página do Google
 driver.get('https://www.google.com.br')
-
+time.sleep(1.5)
 # Início da busca por voz
 voice_search_button = driver.find_element(By.XPATH, '//div[@aria-label="Pesquisar por voz"]')
 voice_search_button.click()
-time.sleep(7)
+time.sleep(20)
 
-# Aguarda uma entrada de teclado antes de encerrar o script
-try:
-    input('Pressione qualquer tecla para encerrar o script...')
-except KeyboardInterrupt:
-    pass
-
-# Encerra a sessão do driver e fecha a janela
-driver.close()
