@@ -9,14 +9,37 @@ import cv2
 
 from voice_search import Voice
 
+
+def v_signal():
+    global cont, processo
+    cont += 1
+    if cont == 1:
+        processo = Voice()
+        processo.abrir()
+
+
+
+def l_signal():
+    global cont, processo
+    if cont >= 1:
+        processo.fechar('y')
+        cont = 0
+
+
+
+def switch_case(n_classe):
+    switcher = {
+        torch.tensor([21.]): v_signal(),
+        torch.tensor([11.]): l_signal()
+    }
+    return switcher.get(n_classe, "Invalid classe")
+
+
+
 model = YOLO(r"D:\Projetos\Hand-Signals\train\best_low_res.pt")
-
-
 cap = cv2.VideoCapture(0)
-
-
 cont = 0
-
+processo = None
 
 while True:
     
@@ -27,26 +50,10 @@ while True:
         
     # Executando a predição com o modelo YOLO
     time.sleep(0.5)
-    results_v = model.predict(img,  conf=0.65, classes=21, show=False)
-    results_l = model.predict(img,  conf=0.65, classes=11, show=False)
+    results = model.predict(img,  conf=0.65, show=False)
         
-    for result in results_v:
+    for result in results:
         #box.append(result.boxes.cls)
         for tensor in result.boxes.cls:
-            if torch.allclose(tensor, torch.tensor([21.])):
-                cont += 1
-                if cont == 1:
-                    processo = Voice()
-                    processo.abrir()
-                    pass
-    
+            switch_case(tensor)
 
-    for result_l in results_l:
-        #box.append(result.boxes.cls)
-        for tensor_l in result_l.boxes.cls:
-            if torch.allclose(tensor_l, torch.tensor([11.])):
-                if cont >= 1:
-                    processo.fechar('y')
-                    #processo.terminate()
-                    cont = 0
-                    pass
