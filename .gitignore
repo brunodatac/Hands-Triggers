@@ -1,2 +1,4 @@
 webcam/__pycache__/__init__.cpython-311.pyc
 webcam/__pycache__/cam.cpython-311.pyc
+__pycache__/hands_triggers.cpython-311.pyc
+__pycache__/voice_search.cpython-311.pyc
