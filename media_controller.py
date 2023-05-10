@@ -1,17 +1,17 @@
-import pygame
 import pyautogui
+import time
 
-pygame.init()
-pygame.mixer.init()
+class Controller():
+    
+    def playpause(self):
+        pyautogui.press('playpause')  # biblioteca PyAutoGUI
+        time.sleep(1.5)
 
-while True:
-    text = input("Digite o texto: ")  # recebe um texto do usuário
-    if "play" == text.lower():  # verifica se a string "play" está presente no texto
-        pyautogui.press('playpause')  # pressiona a tecla de mídia play/pause usando a biblioteca PyAutoGUI
-        print("Tecla de mídia play/pause pressionada.")
-    if "p" == text.lower():
+    def nexttrack(self):
         pyautogui.press('nexttrack')
-        print("Proximo")
-    if "v" == text.lower():
-        pyautogui.press('prevtrack')   
-        print("Voltar")
+        time.sleep(1.5)
+
+    def prevtrack(self):
+        pyautogui.press('prevtrack')
+        pyautogui.press('prevtrack')
+        time.sleep(1.5)
