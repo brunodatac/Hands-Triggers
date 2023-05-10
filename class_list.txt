@@ -1,6 +1,6 @@
-I = 8
-L = 11
-O = 14
+I = 8 - proxima
+L = 11 - fechar voz
+O = 14 - playpause
 R = 17
-V = 21
-W = 22
+V = 21 - voz
+W = 22 - voltar
