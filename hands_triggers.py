@@ -26,6 +26,19 @@ def search(n_classe):
             processo.fechar('y')
     else:
         return "Invalid case"
+    
+
+def media_control(n_classe):
+    controller = Controller()
+    
+    if torch.allclose(n_classe, torch.tensor([14.])): # classe: O | play/pause
+        controller.playpause()
+
+    elif torch.allclose(n_classe, torch.tensor([8.])): # classe: I | proxima faixa
+        controller.nexttrack()
+    
+    elif torch.allclose(n_classe, torch.tensor([22.])): # classe: W | voltar faixa
+        controller.prevtrack()
 
 
 
@@ -49,4 +62,4 @@ while True:
         #box.append(result.boxes.cls)
         for tensor in result.boxes.cls:
             search(tensor)
-
+            media_control(tensor)
