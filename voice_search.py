@@ -54,14 +54,14 @@ class Voice():
         if torch.allclose(n_classe, torch.tensor([21.])): # classe: V | pesquisa de voz
             if not pesquisa_executando:
                 pesquisa_executando = True
-                Display.processbar("Abrindo pesquisa...", 0.005)
+                Display.processbar("Abrindo pesquisa...", 0.5)
                 self.abrir()
 
 
         elif torch.allclose(n_classe, torch.tensor([11.])): # classe: L | fechar pesquisa de voz
             if pesquisa_executando:
                 pesquisa_executando = False
-                Display.processbar("Encerrando...", 0.005)
+                Display.processbar("Encerrando...", 0.5)
                 self.fechar('y')
 
 
