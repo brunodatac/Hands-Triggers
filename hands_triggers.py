@@ -14,7 +14,7 @@ voice = Voice()
 controller = Controller()
 pesquisa_executando = False
 processo = None
-Display.processbar("Iniciando...", 0.75)
+Display.processbar("Iniciando...", 0.65)
 
 
 

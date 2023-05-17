@@ -21,14 +21,14 @@ class Controller():
 
     def media_control(self, n_classe):        
         if torch.allclose(n_classe, torch.tensor([14.])): # classe: O | play/pause
-            Display.processbar("PLAY/PAUSE", 0.3)
+            Display.processbar("PLAY/PAUSE", 0.15)
             self.playpause()
 
         elif torch.allclose(n_classe, torch.tensor([8.])): # classe: I | proxima faixa
-            Display.processbar("NEXT", 0.3)
+            Display.processbar("NEXT", 0.15)
             self.nexttrack()
         
         elif torch.allclose(n_classe, torch.tensor([22.])): # classe: W | voltar faixa
-            Display.processbar("BACK", 0.3)
+            Display.processbar("BACK", 0.15)
             self.prevtrack()
 
