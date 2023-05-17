@@ -19,7 +19,7 @@ def search(n_classe):
     if torch.allclose(n_classe, torch.tensor([21.])): # classe: V | pesquisa de voz
         if not pesquisa_executando:
             pesquisa_executando = True
-            Display.processbar("Abrindo pesquisa...")
+            Display.processbar("Abrindo pesquisa...", 0.005)
             processo = Voice()
             processo.abrir()
             
@@ -27,29 +27,17 @@ def search(n_classe):
     elif torch.allclose(n_classe, torch.tensor([11.])): # classe: L | fechar pesquisa de voz
         if pesquisa_executando:
             pesquisa_executando = False
-            Display.processbar("Encerrando...")
+            Display.processbar("Encerrando...", 0.005)
             processo.fechar('y')
-
-
-def media_control(n_classe):
-    controller = Controller()
-    
-    if torch.allclose(n_classe, torch.tensor([14.])): # classe: O | play/pause
-        controller.playpause()
-
-    elif torch.allclose(n_classe, torch.tensor([8.])): # classe: I | proxima faixa
-        controller.nexttrack()
-    
-    elif torch.allclose(n_classe, torch.tensor([22.])): # classe: W | voltar faixa
-        controller.prevtrack()
 
 
 
 model = YOLO(r"D:\Projetos\Hand-Signals\train\best_low_res.pt")
 cap = cv2.VideoCapture(0)
+controller = Controller()
 pesquisa_executando = False
 processo = None
-
+Display.processbar("Iniciando...", 0.1)
 
 while True:
     
@@ -66,4 +54,4 @@ while True:
         #box.append(result.boxes.cls)
         for tensor in result.boxes.cls:
             search(tensor)
-            media_control(tensor)
+            controller.media_control(tensor)
