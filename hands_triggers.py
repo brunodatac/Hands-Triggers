@@ -43,4 +43,4 @@ while loop:
 
 
 features.Display.processbar("Encerrando...", 1)
-sys.exit("-"*98 + "\n")
+sys.exit("-"*98)
