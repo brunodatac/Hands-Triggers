@@ -61,7 +61,7 @@ class Voice():
                 self.abrir()
 
 
-        elif torch.allclose(n_classe, torch.tensor([11.])): # classe: L | fechar pesquisa de voz
+        elif torch.allclose(n_classe, torch.tensor([22.])): # classe: W | fechar pesquisa de voz
             if self.pesquisa_executando:
                 self.pesquisa_executando = False
                 Display.processbar("Encerrando...", 0.5)
