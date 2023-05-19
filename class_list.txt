@@ -1,7 +1,7 @@
 Classes disponiveis
 
 A = 0  - ruim
-C = 2  - otimo
+
 D = 3  - confunde com F as vezes
 F = 5  - confunde com D as vezes
 I = 8  - bom
@@ -12,7 +12,9 @@ U = 20 - mais ou menos
 
 
 
-Classe com Funções atribuidas
+Classe com Funções atribuídas
+
+C = 2  - ótimo | Encerra o script
 
 B = 1  - otimo | Play-Pause
 L = 11 - otimo | Voltar Faixa
