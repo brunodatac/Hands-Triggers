@@ -4,7 +4,7 @@ import torch
 import time
 import os
 
-from popup import Display
+from .popup import Display
 
 class Voice():
     

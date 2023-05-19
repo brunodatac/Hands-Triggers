@@ -2,19 +2,17 @@ from ultralytics import YOLO
 import time
 import cv2
 
-from voice_search import Voice
-from media_controller import Controller
-from popup import Display
+import features
 
 
 
 model = YOLO(r"D:\Projetos\Hand-Signals\train\best_low_res.pt")
 cap = cv2.VideoCapture(0)
-voice = Voice()
-controller = Controller()
+voice = features.Voice()
+controller = features.Controller()
 pesquisa_executando = False
 processo = None
-Display.processbar("Iniciando...", 0.65)
+features.Display.processbar("Iniciando...", 0.65)
 
 
 
@@ -27,7 +25,7 @@ while True:
 
     # Executando a predição com o modelo YOLO
     time.sleep(0.5)
-    results = model.predict(img,  conf=0.90, show=False)
+    results = model.predict(img,  conf=0.90, stream=True, show=False)
 
     for result in results:
         #box.append(result.boxes.cls)

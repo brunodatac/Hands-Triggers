@@ -2,7 +2,7 @@ import pyautogui
 import torch
 import time
 
-from popup import Display
+from .popup import Display
 
 class Controller():
     
