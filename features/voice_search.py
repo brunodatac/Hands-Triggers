@@ -8,6 +8,9 @@ from popup import Display
 
 class Voice():
     
+    def __init__(self):
+        self.pesquisa_executando = False
+    
     def abrir(self):
         # Cria uma instância do driver do navegador com as configurações necessárias
         options = webdriver.ChromeOptions()
@@ -49,21 +52,17 @@ class Voice():
 
 
     def search(self, n_classe):
-        global pesquisa_executando
+        #global pesquisa_executando
 
         if torch.allclose(n_classe, torch.tensor([21.])): # classe: V | pesquisa de voz
-            if not pesquisa_executando:
-                pesquisa_executando = True
+            if not self.pesquisa_executando:
+                self.pesquisa_executando = True
                 Display.processbar("Abrindo pesquisa...", 0.5)
                 self.abrir()
 
 
         elif torch.allclose(n_classe, torch.tensor([11.])): # classe: L | fechar pesquisa de voz
-            if pesquisa_executando:
-                pesquisa_executando = False
+            if self.pesquisa_executando:
+                self.pesquisa_executando = False
                 Display.processbar("Encerrando...", 0.5)
                 self.fechar('y')
-
-
-
-pesquisa_executando = False
