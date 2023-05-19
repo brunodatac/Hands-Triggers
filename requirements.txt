@@ -1,0 +1,4 @@
+ultralytics==8.0.105
+selenium==4.9.1
+pysimplegui==4.60.4
+PyAutoGUI==0.9.53
