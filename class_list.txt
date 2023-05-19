@@ -1,6 +1,22 @@
-I = 8 - proxima
-L = 11 - fechar voz
-O = 14 - playpause
-R = 17
-V = 21 - voz
-W = 22 - voltar
+Classes disponiveis
+
+A = 0  - ruim
+C = 2  - otimo
+D = 3  - confunde com F as vezes
+F = 5  - confunde com D as vezes
+I = 8  - bom
+P = 15 - mais ou menos
+T = 18 - ruim
+U = 20 - mais ou menos
+
+
+
+
+Classe com Funções atribuidas
+
+B = 1  - otimo | Play-Pause
+L = 11 - otimo | Voltar Faixa
+Y = 24 - otimo | Proxima Faixa
+
+V = 21 - otimo | Voz
+W = 22 - otimo | Fechar Voz
