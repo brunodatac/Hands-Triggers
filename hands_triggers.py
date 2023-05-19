@@ -6,7 +6,7 @@ import features
 
 
 
-model = YOLO(r"D:\Projetos\Hand-Signals\train\best_low_res.pt")
+model = YOLO(r"D:\Projetos\Hand-Signals\train\best_newds.pt")
 cap = cv2.VideoCapture(0)
 voice = features.Voice()
 controller = features.Controller()
@@ -25,7 +25,7 @@ while True:
 
     # Executando a predição com o modelo YOLO
     time.sleep(0.5)
-    results = model.predict(img,  conf=0.90, stream=True, show=False)
+    results = model.predict(img,  conf=0.80, stream=True, show=False)
 
     for result in results:
         #box.append(result.boxes.cls)
