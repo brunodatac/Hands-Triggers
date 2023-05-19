@@ -6,3 +6,7 @@ __pycache__/media_controller.cpython-311.pyc
 class_list.txt
 class_list.txt
 __pycache__/popup.cpython-311.pyc
+features/__pycache__/__init__.cpython-311.pyc
+features/__pycache__/media_controller.cpython-311.pyc
+features/__pycache__/popup.cpython-311.pyc
+features/__pycache__/voice_search.cpython-311.pyc
