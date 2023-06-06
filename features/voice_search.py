@@ -7,11 +7,11 @@ import os
 from .popup import Display
 
 class Voice():
-    
+
     def __init__(self):
-        self.pesquisa_executando = False
-    
-    def abrir(self):
+        self.search_running = False
+
+    def open(self):
         # Cria uma instância do driver do navegador com as configurações necessárias
         options = webdriver.ChromeOptions()
         options.add_argument('--use-fake-ui-for-media-stream')  # Adiciona a opção para usar a UI falsa
@@ -43,26 +43,23 @@ class Voice():
             except:
                 time.sleep(1)
 
-
     # Loop para manter a página de resultados aberta até receber um comando de outro script para encerrar
-    def fechar(self, key):
+    def close(self, key):
         if key == 'y':
             # Remove o arquivo de controle e encerra a execução do script
             self.driver.quit()
 
 
     def search(self, n_classe):
-        #global pesquisa_executando
 
         if torch.allclose(n_classe, torch.tensor([21.])): # classe: V | pesquisa de voz
-            if not self.pesquisa_executando:
-                self.pesquisa_executando = True
+            if not self.search_running:
+                self.search_running = True
                 Display.processbar("Abrindo pesquisa...", 0.5)
-                self.abrir()
-
+                self.open()
 
         elif torch.allclose(n_classe, torch.tensor([22.])): # classe: W | fechar pesquisa de voz
-            if self.pesquisa_executando:
-                self.pesquisa_executando = False
+            if self.search_running:
+                self.search_running = False
                 Display.processbar("Encerrando...", 0.5)
-                self.fechar('y')
+                self.close('y')
